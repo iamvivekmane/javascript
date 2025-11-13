@@ -42,4 +42,3 @@ function firstName(user){
 const output3 = users.filter((x)=>x.age<30).map((x)=>x.firstName);
 
 console.log(output4);
-
