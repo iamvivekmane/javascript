@@ -1,8 +1,13 @@
-let myPromise = new Promise(function(myResolve, myReject) {
-  myResolve(); 
-  myReject();  
-});
-myPromise.then(
-  function(value) {  },
-  function(error) { /* code if some error */ }
-);
+console.log("Hello");
+
+setTimeout(function () {
+  console.log("JavaScript");
+}, 5000);
+
+
+const cart = ["shoes", "pants", "kurta"];
+
+api.createOrder(cart, function () {
+  api.proceedToPayment()
+})
+
