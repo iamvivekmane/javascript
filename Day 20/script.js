@@ -1,31 +1,38 @@
-class Calculator {
-  constructor(initialValue = 0) {
-    this.value = initialValue;
-  }
+const url = "https://jsonplaceholder.typicode.com/posts";
 
-  add(num) {
-    this.value += num;
-    return this; // Crucial for chaining
-  }
+const user = fetch(url);
 
-  subtract(num) {
-    this.value -= num;
-    return this; // Crucial for chaining
-  }
+console.log(user);
 
-  multiply(num) {
-    this.value *= num;
-    return this; // Crucial for chaining
-  }
+user.then(function (data) {
+  console.log(data);
+});
 
-  getResult() {
-    return this.value;
-  }
-}
+// Promise chaining
+// Below the approaches are same 
+//1
+createOrder(CaretPosition, function (orderId) {
+  proceedToPayment(orderId, function (paymentInfo) {
+    showOrderSummary(paymentInfo, function () {
+      updateWalletBalance();
+    });
+  });
+});
 
-const calc = new Calculator(10);
+//2
+createOrder(cart)
+  .then(function (orderId) {
+    return proceedToPayment(orderId);
+  })
+  .then(function (orderId) {
+    return proceedToPayment(paymentInfo);
+  })
+  .then(function (paymentInfo) {
+    return updateWalletBalance(paymentInfo)
+  });
 
-// Chaining methods
-const finalResult = calc.add(5).subtract(2).multiply(3).getResult();
-
-console.log(finalResult); // Output: 39 ( (10 + 5 - 2) * 3 )
+//3
+createOrder(cart)
+  .then(orderId => proceedToPayment(orderId))
+  .then(orderId => proceedToPayment(paymentInfo))
+  .then(paymentInfo => updateWalletBalance(paymentInfo))
