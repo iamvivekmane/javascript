@@ -33,12 +33,29 @@
 
 
 //Actual API call using async await
-const API_URL = "https://api.github.com/users/iamvivekmane";
+// const API_URL = "https://api.github.com/users/iamvivekmane";
+
+// async function getData(){
+//     const Data = await fetch(API_URL);
+//     const jsonData = await Data.json();
+//     console.log(jsonData);
+// }
+
+// getData();
+
+//Actual API call using async await
+const API_URL = "https://api.github.com/user";
 
 async function getData(){
-    const Data = await fetch(API_URL);
-    const jsonData = await Data.json();
-    console.log(jsonData);
+    try{
+        const Data = await fetch(API_URL);
+        const jsonData = await Data.json();
+        console.log(jsonData);
+    }
+    catch(err)
+    {
+        console.log(err);
+    }
 }
 
 getData();
